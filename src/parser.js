@@ -21,7 +21,7 @@ export function parser(data, level = 0) {
       /^\d+$/.test(tag) &&
       ((parseInt(tag, 10) >= 26 && parseInt(tag, 10) <= 51) || tag === "62")
     ) {
-      result[tag] = parser(value, level + 1);
+      result[tag] = { length, ...parser(value, level + 1) };
     } else {
       result[tag] =
         level > 0
